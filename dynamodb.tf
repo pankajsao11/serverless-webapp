@@ -31,34 +31,34 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     name     = "EmailIndex"
     hash_key = "Email"
     #range_key          = "TopScore"
-    write_capacity     = 20
-    read_capacity      = 20
-    projection_type    = "KEYS_ONLY"
+    write_capacity  = 20
+    read_capacity   = 20
+    projection_type = "KEYS_ONLY"
     #non_key_attributes = ["Name", "Phone", "Password"]
   }
 
   global_secondary_index {
-    name               = "NameIndex"
-    hash_key           = "Name"
-    write_capacity     = 20
-    read_capacity      = 20
-    projection_type    = "KEYS_ONLY"
+    name            = "NameIndex"
+    hash_key        = "Name"
+    write_capacity  = 20
+    read_capacity   = 20
+    projection_type = "KEYS_ONLY"
     #non_key_attributes = ["Email", "Phone", "Password"]
   }
   global_secondary_index {
-    name               = "PhoneIndex"
-    hash_key           = "Phone"
-    write_capacity     = 20
-    read_capacity      = 20
-    projection_type    = "KEYS_ONLY"
+    name            = "PhoneIndex"
+    hash_key        = "Phone"
+    write_capacity  = 20
+    read_capacity   = 20
+    projection_type = "KEYS_ONLY"
     #non_key_attributes = ["Name", "Email", "Password"]
   }
   global_secondary_index {
-    name               = "PasswordIndex"
-    hash_key           = "password"
-    write_capacity     = 20
-    read_capacity      = 20
-    projection_type    = "KEYS_ONLY"
+    name            = "PasswordIndex"
+    hash_key        = "password"
+    write_capacity  = 20
+    read_capacity   = 20
+    projection_type = "KEYS_ONLY"
     #non_key_attributes = ["Name", "Phone", "Email"]
   }
 
