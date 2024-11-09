@@ -1,9 +1,8 @@
 # serverless-webapp
 
+Overview: This serverless web application is designed to handle user registrations. It leverages AWS services to ensure scalability, low maintenance, and cost-efficiency. The main components include AWS Lambda for backend processing, API Gateway for routing and managing API requests, DynamoDB for storing user data, and CloudWatch Logs for monitoring and debugging.
 
 ![image](https://github.com/user-attachments/assets/4aa3a6cd-5167-42b4-9c55-eff40a053bb6)
-
-Overview: This serverless web application is designed to handle user registrations. It leverages AWS services to ensure scalability, low maintenance, and cost-efficiency. The main components include AWS Lambda for backend processing, API Gateway for routing and managing API requests, DynamoDB for storing user data, and CloudWatch Logs for monitoring and debugging.
 
 Components:
 
