@@ -6,8 +6,8 @@ variable "region" {
 
 variable "accountId" {
   description = "Account Id/number"
-  type = string
-  default = "211125590785"
+  type        = string
+  default     = "211125590785"
 }
 variable "environment" {
   description = "Project Environment"
