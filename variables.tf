@@ -19,3 +19,24 @@ variable "lambda_function_name" {
   type    = string
   default = "webapp-function"
 }
+
+variable "mime_types" {
+  default = {
+    ".html" = "text/html"
+    ".css"  = "text/css"
+    ".js"   = "application/javascript"
+    ".png"  = "image/png"
+    ".jpg"  = "image/jpeg"
+  }
+}
+
+variable "key" {
+  default = "lambda_code.zip"
+}
+variable "table_name" {
+  default = "webapp-DbTable"
+}
+
+variable "stage_name" {
+  default = "dev"
+}

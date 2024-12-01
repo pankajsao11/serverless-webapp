@@ -3,13 +3,20 @@ resource "aws_lambda_function" "test_lambda" {
   # path.module in the filename.
   description   = "Lambda function for Serverless WebApp"
   architectures = ["x86_64"]
-  filename      = "lambda_function_payload.zip"
+  #filename      = "lambda_function_payload.zip"
+
+  s3_bucket = aws_s3_bucket.web_bucket.id
+  s3_key    = var.key
+  environment {
+    variables = {
+      TABLE_NAME = var.table_name
+    }
+  }
+
   function_name = var.lambda_function_name
   role          = aws_iam_role.webapp_role.arn
   handler       = "index.test"
 
-  #source_code_hash = data.archive_file.lambda.output_base64sha256
-  #depends_on = [data.aws_iam_role.iam_role.lambda_logs, aws_cloudwatch_log_group.cloudwatch_logs]
   logging_config {
     log_format = "JSON"
   }
@@ -21,3 +28,12 @@ resource "aws_cloudwatch_log_group" "cloudwatch_logs" {
   log_group_class   = "STANDARD"
   retention_in_days = 14
 }
+
+/*
+resource "aws_lambda_permission" "api_gateway_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.test_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+}
+*/

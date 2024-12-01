@@ -1,10 +1,10 @@
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
-  name = "webapp-DbTable"
-  #billing_mode   = "PAY_PER_REQUEST"
-  table_class    = "STANDARD"
-  read_capacity  = 20
-  write_capacity = 20
-  hash_key       = "Email" #partition key
+  name         = var.table_name
+  billing_mode = "PAY_PER_REQUEST"
+  table_class  = "STANDARD"
+  #read_capacity  = 20
+  #write_capacity = 20
+  hash_key = "Email" #partition key
   #range_key = ["Name", "Phone", "password"]
 
   attribute {
@@ -66,4 +66,8 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     Name        = "webapp-db-table"
     Environment = "development"
   }
+}
+
+output "table_name" {
+  value = aws_dynamodb_table.basic-dynamodb-table.name
 }
