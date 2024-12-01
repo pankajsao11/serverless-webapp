@@ -1,7 +1,7 @@
 data "aws_iam_policy_document" "policy" {
   statement {
     effect    = "Allow"
-    actions   = ["dynamodb:*", "cloudwatch:*", "lambda:*"]
+    actions   = ["dynamodb:*", "cloudwatch:*", "lambda:*", "s3:*"]
     resources = ["*"]
   }
 }
@@ -31,11 +31,16 @@ resource "aws_iam_role" "webapp_role" {
 }
 
 resource "aws_iam_policy" "policy" {
-  name   = "permissions_attachment"
-  policy = data.aws_iam_policy_document.policy.json
+  name        = "permissions_attachment"
+  description = "Policy for Lambda to access DynamoDB, CloudWatch, and S3"
+  policy      = data.aws_iam_policy_document.policy.json
 }
 
 resource "aws_iam_role_policy_attachment" "permission-attach" {
   role       = aws_iam_role.webapp_role.name
   policy_arn = aws_iam_policy.policy.arn
+}
+
+output "lambda_role_arn" {
+  value = aws_iam_role.webapp_role.arn
 }
