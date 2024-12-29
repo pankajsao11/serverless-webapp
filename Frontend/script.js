@@ -12,7 +12,7 @@ function submitForm() {
 
     // Set up request
     //xhr.open('POST', 'API_INVOKE_URL/register', true);
-    xhr.open('POST', 'https://4j3d6a1042.execute-api.ap-south-1.amazonaws.com/dev/resource', true);
+    xhr.open('POST', 'https://un7bfph3qh.execute-api.ap-south-1.amazonaws.com/dev/register', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     // Set up response handler

@@ -40,3 +40,7 @@ variable "table_name" {
 variable "stage_name" {
   default = "dev"
 }
+
+/*variable "api_arn" {
+  default = "arn:aws:apigateway:ap-south-1::/restapis/v9ym3uhba4"
+}*/
