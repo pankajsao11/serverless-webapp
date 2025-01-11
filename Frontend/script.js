@@ -10,9 +10,8 @@ function submitForm() {
     // Create request object
     const xhr = new XMLHttpRequest();
 
-    // Set up request
     //xhr.open('POST', 'API_INVOKE_URL/register', true);
-    xhr.open('POST', 'https://4j3d6a1042.execute-api.ap-south-1.amazonaws.com/dev/resource', true);
+    xhr.open('POST', 'https://5r8gtfjyfh.execute-api.ap-south-1.amazonaws.com/uat/register', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     // Set up response handler
