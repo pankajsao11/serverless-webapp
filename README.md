@@ -19,8 +19,8 @@ API Gateway:
 Purpose: Serves as the entry point for HTTP requests to the Lambda function.
 Functionality: Routes HTTP POST requests to the Lambda function.
 
-![api-a](https://github.com/user-attachments/assets/eae119b3-af17-4409-8285-a8647c736d4a)
-![api-b](https://github.com/user-attachments/assets/7041723a-737e-46df-98f0-634e32171544)
+![api-a](https://github.com/user-attachments/assets/7763c47b-6dbe-4a95-8d3a-1efdd0619efe)
+![api-b](https://github.com/user-attachments/assets/87699145-403e-46c3-8b15-ea2e8bc6effb)
 
 
 DynamoDB:
