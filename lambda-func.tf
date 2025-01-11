@@ -15,7 +15,7 @@ resource "aws_lambda_function" "test_lambda" {
 
   function_name = var.lambda_function_name
   role          = aws_iam_role.webapp_role.arn
-  handler       = "index.test"
+  handler       = "lambda.lambda_handler"
 
   logging_config {
     log_format = "JSON"
@@ -30,10 +30,13 @@ resource "aws_cloudwatch_log_group" "cloudwatch_logs" {
 }
 
 /*
-resource "aws_lambda_permission" "api_gateway_permission" {
-  statement_id  = "AllowAPIGatewayInvoke"
+# Lambda
+resource "aws_lambda_permission" "apigw_lambda" {
+  statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.test_lambda.function_name
   principal     = "apigateway.amazonaws.com"
+
+  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
 }
 */

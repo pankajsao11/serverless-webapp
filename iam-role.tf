@@ -1,7 +1,8 @@
 data "aws_iam_policy_document" "policy" {
   statement {
-    effect    = "Allow"
-    actions   = ["dynamodb:*", "cloudwatch:*", "lambda:*", "s3:*"]
+    effect = "Allow"
+    actions = ["dynamodb:*", "lambda:*", "cloudwatch:*",
+    "logs:*", "iam:*", "cloudwatch:*", "logs:*"]
     resources = ["*"]
   }
 }

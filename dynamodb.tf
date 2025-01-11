@@ -4,22 +4,22 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   table_class  = "STANDARD"
   #read_capacity  = 20
   #write_capacity = 20
-  hash_key = "Email" #partition key
+  hash_key = "email" #partition key
   #range_key = ["Name", "Phone", "password"]
 
   attribute {
-    name = "Email"
+    name = "email"
     type = "S"
   }
 
   attribute {
-    name = "Name"
+    name = "name"
     type = "S"
   }
 
   attribute {
-    name = "Phone"
-    type = "N"
+    name = "phone"
+    type = "S"
   }
 
   attribute {
@@ -29,7 +29,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
 
   global_secondary_index {
     name     = "EmailIndex"
-    hash_key = "Email"
+    hash_key = "email"
     #range_key          = "TopScore"
     write_capacity  = 20
     read_capacity   = 20
@@ -39,7 +39,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
 
   global_secondary_index {
     name            = "NameIndex"
-    hash_key        = "Name"
+    hash_key        = "name"
     write_capacity  = 20
     read_capacity   = 20
     projection_type = "KEYS_ONLY"
@@ -47,7 +47,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   }
   global_secondary_index {
     name            = "PhoneIndex"
-    hash_key        = "Phone"
+    hash_key        = "phone"
     write_capacity  = 20
     read_capacity   = 20
     projection_type = "KEYS_ONLY"
