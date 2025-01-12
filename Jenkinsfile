@@ -1,84 +1,54 @@
-// Jenkins Pipeline script for Terraform CI/CD
-
 pipeline {
-    agent any
 
+    parameters {
+        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
+    } 
     environment {
-        //GIT_REPO = 'https://github.com/your-org/your-terraform-repo.git' // Replace with your repository URL will be used only if not configuring SCM pipeline
-        //BRANCH = 'main' // Replace with your branch name
-        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')          // AWS Access Key (stored in Jenkins Credentials)
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')     // AWS Secret Key (stored in Jenkins Credentials)
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
+   agent  any
     stages {
-        stage('Checkout Code') {
+        stage('checkout') {
             steps {
-                script {
-                    // Clone the Terraform code from GitHub
-                    git branch: main, url: 'https://github.com/pankajsao11/serverless-webapp.git'
+                 script{
+                        dir("terraform")
+                        {
+                            git "https://github.com/pankajsao11/serverless-webapp.git"
+                        }
+                    }
                 }
+            }
+
+        stage('Plan') {
+            steps {
+                sh 'pwd;cd terraform/ ; terraform init'
+                sh "pwd;cd terraform/ ; terraform plan -out tfplan"
+                sh 'pwd;cd terraform/ ; terraform show -no-color tfplan > tfplan.txt'
             }
         }
+        stage('Approval') {
+           when {
+               not {
+                   equals expected: true, actual: params.autoApprove
+               }
+           }
 
-        stage('Terraform Init') {
-            steps {
-                script {                    
-                    sh 'terraform init'  // Initialize Terraform
-                }
-            }
-        }
+           steps {
+               script {
+                    def plan = readFile 'terraform/tfplan.txt'
+                    input message: "Do you want to apply the plan?",
+                    parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
+               }
+           }
+       }
 
-        stage('Terraform Validate') {
+        stage('Apply') {
             steps {
-                script {                    
-                    sh 'terraform validate'  // Terraform validate for syntax checking
-                }
-            }
-        }
-
-        stage('Terraform format') {
-            steps {
-                script {                    
-                    sh 'terraform fmt --recursive' // Terraform format for formatting code
-                }
-            }
-        }
-
-        stage('Terraform Plan') {
-            steps {
-                script {
-                    // Generate and display the Terraform execution plan
-                    sh 'terraform plan'
-                }
-            }
-        }
-
-        stage('Terraform Apply') {
-            when {
-                expression {
-                    // Run terraform apply only for non-PR environments or specific conditions
-                    return params.APPLY_CHANGES == true
-                }
-            }
-            steps {
-                script {
-                    // Apply the Terraform changes
-                    sh 'terraform apply -auto-approve'
-                }
+                sh "pwd;cd terraform/ ; terraform apply -input=false tfplan"
             }
         }
     }
 
-    post {
-        always {
-            // Clean up workspace after execution
-            cleanWs()
-        }
-        success {
-            echo 'Terraform pipeline executed successfully!'
-        }
-        failure {
-            echo 'Terraform pipeline failed. Please check logs!'
-        }
-    }
-}
+  }
