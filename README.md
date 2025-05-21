@@ -34,6 +34,9 @@ Purpose: Stores user registration data.
 Functionality: Provides scalable and high-speed storage for user data.
 
 ![dynamodb-1](https://github.com/user-attachments/assets/5780fe7c-3a19-4301-9cd0-df998951ac4d)
+
+Global Secondary Indexes (GSIs) in Amazon DynamoDB are a powerful feature that allows you to efficiently query data using attributes other than the table's primary key. GSIs enable flexible and efficient querying of data based on attributes that are not part of the table's primary key.
+
 ![db-data](https://github.com/user-attachments/assets/c40b1db5-4172-4e8c-a42e-5f2567ed6d62)
 
 
