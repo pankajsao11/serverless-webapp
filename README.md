@@ -27,6 +27,9 @@ Functionality: Routes HTTP POST requests to the Lambda function.
 ![api-a](https://github.com/user-attachments/assets/7763c47b-6dbe-4a95-8d3a-1efdd0619efe)
 ![api-b](https://github.com/user-attachments/assets/87699145-403e-46c3-8b15-ea2e8bc6effb)
 
+```
+#CORS: CORS (Cross-Origin Resource Sharing) is a security feature implemented by web browsers that allows or denies requests for resources from one domain to be made from a different domain. It is a mechanism that allows web servers to specify which domains are permitted to access the resources they serve.
+```
 
 ## DynamoDB:
 Amazon DynamoDB is a fully managed NoSQL database service serverless database. Supports both key-value and document data models. Provides consistent, single-digit millisecond latency at any scale, Automatic scaling to handle varying levels of traffic.
