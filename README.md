@@ -27,6 +27,23 @@ Functionality: Routes HTTP POST requests to the Lambda function.
 ![api-a](https://github.com/user-attachments/assets/7763c47b-6dbe-4a95-8d3a-1efdd0619efe)
 ![api-b](https://github.com/user-attachments/assets/87699145-403e-46c3-8b15-ea2e8bc6effb)
 
+## REST API
+A REST API, or RESTful API, is a type of application programming interface that uses HTTP requests to access and use data. The "REST" stands for Representational State Transfer, which is an architectural style for networked applications. REST APIs use standard HTTP methods and are widely used for web and mobile applications. 
+
+How a REST API works :-
+A REST API enables communication between a client and a server. 
+Request: A client (e.g., a web browser or mobile app) sends an HTTP request to an API endpoint (a URL) to perform a specific action.
+Resource: The endpoint URL identifies the resource—any piece of content or data on the server that the client wants to access.
+Method: The request includes an HTTP method, which tells the server what kind of operation to perform. These commonly correspond to CRUD (Create, Read, Update, Delete) actions.
+Response: The server processes the request and sends a response back to the client. This includes an HTTP status code indicating success or failure, and often a representation of the resource, typically in JSON format. 
+
+Common HTTP methods:-
+REST APIs use standard HTTP methods to define the action for a given request: 
+GET: Retrieves a representation of a resource. This is used to read data.
+POST: Creates a new resource on the server.
+PUT: Replaces an existing resource with new data.
+PATCH: Applies partial updates to a resource.
+DELETE: Removes a resource. 
 ```
 #CORS: CORS (Cross-Origin Resource Sharing) is a security feature implemented by web browsers that allows or denies requests for resources from one domain to be made from a different domain. It is a mechanism that allows web servers to specify which domains are permitted to access the resources they serve.
 ```
