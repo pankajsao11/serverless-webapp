@@ -12,9 +12,16 @@ AWS Lambda is a serverless compute service that allows you to run code without p
 Purpose: Acts as the backend processing logic for handling registration requests.
 Functionality: Validates input, processes the registration logic, and stores user data in DynamoDB.
 
+https://docs.aws.amazon.com/lambda/latest/dg/concepts-basics.html
 ![lambda-a](https://github.com/user-attachments/assets/0d384db6-4b47-42ae-9b7f-9d484e84cb8d)
 ![lambda-b](https://github.com/user-attachments/assets/41cdb6ea-9ecc-4a05-81b6-bd1a5b1a8da4)
 
+Its three main components are:
+```
+Function: this is where the actual code that performs the task lives.
+Configuration: This component specifies how the function is to be executed.
+Event Source: This is the event that triggers the function and can be triggered by multiple AWS services or a third-party service. It is an optional component; it does not have to be added in all cases.
+```
 
 ## API Gateway:
 Amazon API Gateway is a fully managed service that enables developers to create, publish, maintain, monitor, and secure APIs at any scale.
