@@ -21,6 +21,8 @@ Its three main components are:
 Function: this is where the actual code that performs the task lives.
 Configuration: This component specifies how the function is to be executed.
 Event Source: This is the event that triggers the function and can be triggered by multiple AWS services or a third-party service. It is an optional component; it does not have to be added in all cases.
+Version: versions are used to manage the deployment of your Lambda functions. Each version of a Lambda function is immutable and has a unique ARN (Amazon Resource Name). This allows you to maintain multiple versions of your function code and configuration, and to roll back to a previous version if needed.
+Aliase: A Lambda alias is a pointer to a function version that you can update. The function’s users can access the function version using the alias Amazon Resource Name (ARN). When you deploy a new version, you can update the alias to use the new version, or split traffic between two versions.
 ```
 
 ## API Gateway:
