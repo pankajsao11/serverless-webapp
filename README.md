@@ -25,6 +25,13 @@ Version: versions are used to manage the deployment of your Lambda functions. Ea
 Aliase: A Lambda alias is a pointer to a function version that you can update. The function’s users can access the function version using the alias Amazon Resource Name (ARN). When you deploy a new version, you can update the alias to use the new version, or split traffic between two versions.
 ```
 
+```
+#Lambda Invocation:
+
+* In a Synchronous Invocation, the caller waits for the Lambda function to complete execution and return a response. This type is best suited for use cases where the result of the function is immediately required.
+
+* In an Asynchronous Invocation, the caller sends the request to Lambda and receives a response immediately without waiting for the function to complete execution. This method is ideal for background processing tasks.
+```
 ## API Gateway:
 Amazon API Gateway is a fully managed service that enables developers to create, publish, maintain, monitor, and secure APIs at any scale.
 Types of APIs: REST APIs, WebSocket APIs, HTTP APIs. Handles traffic management, authorization, access control, throttling, and monitoring. Offers caching capabilities to improve performance. 
